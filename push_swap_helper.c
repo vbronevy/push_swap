@@ -32,6 +32,7 @@ int swap_a(int *stack_a)
 	stack_a[0] = stack_a[1];
 	stack_a[1] = holder;
 
+	printf("sa\n");
 	return(1);
 }
 
@@ -55,6 +56,26 @@ int rotate_a(int *stack_a)
 		stack_a[size - i] = holder;
 		i++;
 	}
+	printf("ra\n");
 	return (1);
 }
 
+int r_rotate_a(int *stack_a)
+{
+	int size;
+	int i;
+	int	holder;
+
+	size = stack_size(stack_a) - 1;
+	// printf("%d", size);
+	i = 1;
+	while(i < size + 1)
+	{
+		holder = stack_a[0];
+		stack_a[0] = stack_a[i];
+		stack_a[i] = holder;
+		i++;
+	}
+	printf("rra\n");
+	return (1);
+}

@@ -12,36 +12,62 @@
 
 #include "push_swap.h"
 
-int	push_swap(int *stack_a)
+int	push_swap(int *stack_a, int size)
 {
-	int	*stack_b;
+	// int	*stack_b;
 
-	swap_a(stack_a);
-	swap_a(stack_a);
-	rotate_a(stack_a);
+	if(stack_a[size - 1] < stack_a[size - 2])
+	{
+		if(stack_a[size - 2] < stack_a[size - 3])
+		{
+			swap_a(stack_a);
+			r_rotate_a(stack_a);
+		}
+		else{
+			r_rotate_a(stack_a);
+			if(stack_a[size - 2] < stack_a[size - 3])
+				swap_a(stack_a);
+		}
+	}
+	if(stack_a[size - 2] < stack_a[size - 3])
+		swap_a(stack_a);
+	return (0);
+}
+
+int write_lines()
+{
+	printf("sa\n");
+	printf("rra\n");
+	return 0;
 }
 
 int main(int argc, char	 *argv[])
 {
 	int	i;
-	int j;
 	int	*stack_a;
 
 	stack_a = malloc(argc * 4);
 	i = 1;
-	j = 0;
 	while(i < argc)
 	{
 		stack_a[i - 1] = *argv[i] - 48;
 		i++;
 	}
 	stack_a[i - 1] = '\0'; 
-	push_swap(stack_a);
 	i = 0;
-	while(i < 5)
+	while(stack_a[i])
 	{
-		printf("%d ", stack_a[i]);
+		if(!(stack_a[i] < stack_a[i + 1]))
+			break;
 		i++;
 	}
+	if(i != argc)
+		push_swap(stack_a, argc);
+	// while(stack_a[i])	
+	// {
+	// 	printf("%d ", stack_a[i]);
+	// 	i++;
+	// }
 	free(stack_a);
+    return 0;
 }

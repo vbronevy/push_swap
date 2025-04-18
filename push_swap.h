@@ -18,5 +18,7 @@
 
 int swap_a(int *stack_a);
 int rotate_a(int *stack_a);
+int r_rotate_a(int *stack_a);
+
 
 #endif
