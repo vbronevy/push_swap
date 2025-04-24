@@ -14,31 +14,12 @@
 
 int	push_swap(int *stack_a, int size)
 {
-	// int	*stack_b;
+	int	*stack_b;
 
-	if(stack_a[size - 1] < stack_a[size - 2])
-	{
-		if(stack_a[size - 2] < stack_a[size - 3])
-		{
-			swap_a(stack_a);
-			r_rotate_a(stack_a);
-		}
-		else{
-			r_rotate_a(stack_a);
-			if(stack_a[size - 2] < stack_a[size - 3])
-				swap_a(stack_a);
-		}
-	}
-	if(stack_a[size - 2] < stack_a[size - 3])
-		swap_a(stack_a);
+	stack_b = malloc(size * 4);
+
+	
 	return (0);
-}
-
-int write_lines()
-{
-	printf("sa\n");
-	printf("rra\n");
-	return 0;
 }
 
 int main(int argc, char	 *argv[])

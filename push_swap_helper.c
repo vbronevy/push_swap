@@ -18,9 +18,7 @@ int stack_size(int	*stack)
 
 	i = 0;
 	while(stack[i])
-	{
 		i++;
-	}
 	return(i);
 }
 
@@ -38,6 +36,18 @@ int swap_a(int *stack_a)
 
 int push_a(int	*stack_a, int *stack_b)
 {
+	if(stack_b[0] == '\0' || stack_b[1] == '\0')
+		return (0);
+	
+	
+}
+
+int push_b(int *stack_a, int *stack_b)
+{
+	if(stack_a[0]  = '\0')
+		return(0);
+	
+	
 
 }
 int rotate_a(int *stack_a)
