@@ -12,6 +12,11 @@
 
 #include "push_swap.h"
 
+typedef struct s_node{
+	int number;
+	struct s_node* next;
+}s_node;
+
 int	push_swap(int *stack_a, int size)
 {
 	int	*stack_b;
@@ -25,30 +30,32 @@ int	push_swap(int *stack_a, int size)
 int main(int argc, char	 *argv[])
 {
 	int	i;
-	int	*stack_a;
-
-	stack_a = malloc(argc * 4);
+	
 	i = 1;
+	s_node* start_node;
+	s_node* current_node;
+	start_node = NULL;
+	current_node = NULL;
+
 	while(i < argc)
 	{
-		stack_a[i - 1] = *argv[i] - 48;
+		s_node* node = malloc(sizeof(s_node));
+		node->number = *argv[i] - 48;
+		node->next = NULL;
+
+		if(start_node == NULL)
+			start_node = node;
+		else
+			current_node->next = node;
+		current_node = node;
 		i++;
 	}
-	stack_a[i - 1] = '\0'; 
+	s_node* current = start_node;
 	i = 0;
-	while(stack_a[i])
-	{
-		if(!(stack_a[i] < stack_a[i + 1]))
-			break;
+	while(current != NULL){
+		printf("%d\n", current->number);
+		current = current->next;
 		i++;
 	}
-	if(i != argc)
-		push_swap(stack_a, argc);
-	// while(stack_a[i])	
-	// {
-	// 	printf("%d ", stack_a[i]);
-	// 	i++;
-	// }
-	free(stack_a);
     return 0;
 }
