@@ -22,13 +22,15 @@ int stack_size(int	*stack)
 	return(i);
 }
 
-int swap_a(int *stack_a)
+int swap_a(s_node *stack_a)
 {
 	int	holder;
+	s_node *next;
 
-	holder = stack_a[0];
-	stack_a[0] = stack_a[1];
-	stack_a[1] = holder;
+	next = stack_a->next;
+	holder = stack_a->number;
+	stack_a->number = next->number;
+	next->number = holder;
 
 	printf("sa\n");
 	return(1);
@@ -47,25 +49,22 @@ int push_b(int *stack_a, int *stack_b)
 	if(stack_a[0]  = '\0')
 		return(0);
 	
-	
-
 }
-int rotate_a(int *stack_a)
+int rotate_a(s_node **stack_a)
 {
 	int size;
-	int i;
-	int	holder;
+	s_node *last;
+	s_node *first;
 
-	size = stack_size(stack_a) - 1;
-	// printf("%d", size);
-	i = 1;
-	while(i < size + 1)
-	{
-		holder = stack_a[size];
-		stack_a[size] = stack_a[size - i];
-		stack_a[size - i] = holder;
-		i++;
-	}
+	first = *stack_a;
+	last = *stack_a;
+	while (last->next != NULL) {
+        last = last->next;
+    }
+	*stack_a = first->next;
+	first->next = NULL;
+	last->next = first;
+
 	printf("ra\n");
 	return (1);
 }

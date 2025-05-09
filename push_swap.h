@@ -16,9 +16,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int swap_a(int *stack_a);
-int rotate_a(int *stack_a);
-int r_rotate_a(int *stack_a);
+typedef struct s_node{
+	int number;
+	struct s_node* next;
+}s_node;
 
+int swap_a(s_node *stack_a);
+int rotate_a(s_node **stack_a);
+int r_rotate_a(int *stack_a);
 
 #endif	
