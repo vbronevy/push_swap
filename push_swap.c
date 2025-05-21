@@ -13,15 +13,25 @@
 #include "push_swap.h"
 
 
-int	push_swap(s_node *stack_a)
+int	push_swap(s_node **stack_a)
 {
 	s_node	*stack_b;
+	s_node	*current;
+	int i;
 
+	i = 0;
 	stack_b = malloc(sizeof(s_node));
 	stack_b = NULL;
-	rotate_a(&stack_a);
+	// r_rotate_a(stack_a);
+	push_b(stack_a, &stack_b);
+	push_b(stack_a, &stack_b);
 
-
+	current = stack_b;
+	while(current != NULL){
+		printf("stack_b: %d\n", current->number);
+		current = current->next;
+		i++;	
+	}
 	return (0);
 }
 
@@ -49,10 +59,10 @@ int main(int argc, char	 *argv[])
 		i++;
 	}
 	i = 0;
-	push_swap(start_node);
+	push_swap(&start_node);
 	s_node* current = start_node;
 	while(current != NULL){
-		printf("%d\n", current->number);
+		printf("stack_a: %d\n", current->number);
 		current = current->next;
 		i++;	
 	}

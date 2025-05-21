@@ -36,19 +36,27 @@ int swap_a(s_node *stack_a)
 	return(1);
 }
 
-int push_a(int	*stack_a, int *stack_b)
-{
-	if(stack_b[0] == '\0' || stack_b[1] == '\0')
-		return (0);
-	
-	
-}
+// int push_a(s_node	**stack_a,s_node **stack_b)
+// {		
 
-int push_b(int *stack_a, int *stack_b)
+// }
+
+int push_b(s_node **stack_a, s_node **stack_b)
 {
-	if(stack_a[0]  = '\0')
-		return(0);
-	
+	s_node *elem;
+
+	elem = *stack_a;
+	*stack_a = (*stack_a)->next;
+	if (*stack_b == NULL){
+		*stack_b = elem;
+		(*stack_b)->next = NULL;
+	}
+	else
+	{
+		elem->next = *stack_b;
+		*stack_b = elem;
+	}
+	return(0);
 }
 int rotate_a(s_node **stack_a)
 {
@@ -69,22 +77,20 @@ int rotate_a(s_node **stack_a)
 	return (1);
 }
 
-int r_rotate_a(int *stack_a)
+int r_rotate_a(s_node **stack_a)
 {
-	int size;
-	int i;
-	int	holder;
+	s_node *last;
+	s_node *b_last;
 
-	size = stack_size(stack_a) - 1;
-	// printf("%d", size);
-	i = 1;
-	while(i < size + 1)
-	{
-		holder = stack_a[0];
-		stack_a[0] = stack_a[i];
-		stack_a[i] = holder;
-		i++;
-	}
-	printf("rra\n");
+	b_last = *stack_a;
+	last = (*stack_a)->next;
+	while (last->next != NULL) {
+        last = last->next;
+		b_last = b_last->next;
+    }
+	last->next = *stack_a;
+	*stack_a = last; 	
+	b_last->next = NULL;
+	printf("ra\n");
 	return (1);
-}
+} 
