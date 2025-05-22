@@ -22,16 +22,24 @@ int	push_swap(s_node **stack_a)
 	i = 0;
 	stack_b = malloc(sizeof(s_node));
 	stack_b = NULL;
-	// r_rotate_a(stack_a);
-	push_b(stack_a, &stack_b);
-	push_b(stack_a, &stack_b);
+	current = *stack_a;
 
-	current = stack_b;
 	while(current != NULL){
-		printf("stack_b: %d\n", current->number);
+		if(current->number > (current->next)->number){
+			rotate_a(stack_a);
+		}
+		else{
+			swap_a(*stack_a);
+			rotate_a(stack_a);
+		}
 		current = current->next;
-		i++;	
 	}
+	// current = stack_b;
+	// while(current != NULL){
+	// 	printf("stack_b: %d\n", current->number);
+	// 	current = current->next;
+	// 	i++;	
+	// }
 	return (0);
 }
 
@@ -48,7 +56,7 @@ int main(int argc, char	 *argv[])
 	while(i < argc)
 	{
 		s_node* node = malloc(sizeof(s_node));
-		node->number = *argv[i] - 48;
+		node->number = atoi(argv[i]);
 		node->next = NULL;
 
 		if(start_node == NULL)

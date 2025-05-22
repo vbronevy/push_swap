@@ -25,5 +25,6 @@ int swap_a(s_node *stack_a);
 int rotate_a(s_node **stack_a);
 int r_rotate_a(s_node **stack_a);
 int push_b(s_node **stack_a, s_node **stack_b);
+int push_a(s_node	**stack_a,s_node **stack_b);
 
 #endif	

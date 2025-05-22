@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-int stack_size(int	*stack)
-{
-	int	i;
-
-	i = 0;
-	while(stack[i])
-		i++;
-	return(i);
-}
-
 int swap_a(s_node *stack_a)
 {
 	int	holder;
@@ -36,15 +26,34 @@ int swap_a(s_node *stack_a)
 	return(1);
 }
 
-// int push_a(s_node	**stack_a,s_node **stack_b)
-// {		
+int push_a(s_node	**stack_a, s_node **stack_b)
+{		
+	s_node *elem;
 
-// }
+	if(*stack_b == NULL){
+		return(0);
+	}
+	elem = *stack_b;
+	*stack_b = (*stack_b)->next;
+	if (*stack_a == NULL){
+		*stack_a = elem;
+		(*stack_a)->next = NULL;
+	}
+	else
+	{
+		elem->next = *stack_a;
+		*stack_a = elem;
+	}
+	return(0);
+}
 
 int push_b(s_node **stack_a, s_node **stack_b)
 {
 	s_node *elem;
 
+	if(*stack_a == NULL){
+		return(0);
+	}
 	elem = *stack_a;
 	*stack_a = (*stack_a)->next;
 	if (*stack_b == NULL){
