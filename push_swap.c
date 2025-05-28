@@ -79,7 +79,7 @@ int main(int argc, char	 *argv[])
 		node->number = atoi(&argv[1][i]);
 		printf("n:%d\n", node->number);
 		node->next = NULL;
-x
+
 		if(start_node == NULL)
 			start_node = node;
 		else
