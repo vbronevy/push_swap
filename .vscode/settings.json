@@ -2,5 +2,9 @@
 	"files.associations": {
 		"push_swap.h": "c",
 		"type_traits": "c"
-	}
+	},
+	"editor.detectIndentation": true,
+	"editor.tabCompletion": "on",
+	"editor.useTabStops": true,
+	"editor.insertSpaces": false
 }
